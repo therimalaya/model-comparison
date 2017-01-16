@@ -414,7 +414,7 @@ The less desirable featurs of Bayes-PLS is that it requires very heavy computati
 \section{Data Simulations for model comparison}
 \label{sec:data-simulation}
 
-A comparative study was performed on these model based on their test prediction error using simulated datasets. The simulation of the calibration datasets for the purpose were sampled from joint normal distribution with following specific properties.
+A comparative study was performed on these model based on their test prediction error using simulated datasets. The simulation of the calibration datasets were sampled from joint normal distribution with following specific properties.
 
 \bigskip
 
@@ -435,15 +435,15 @@ A comparative study was performed on these model based on their test prediction 
 From the possible combination of above parameters, 32 calibration sets were simulated with 5 replications of each, i.e. there are 160 calibration sets where each 5 of them have similar properties. In order to simulate these data an r-package {\tt simrel} \citep{saebo2015simrel} was used which is based on the concept of relevant space discussed in \citet{helland1994comparison}. Simulation with {\tt simrel} follows --
 
 \begin{itemize}[label=$\triangleright$]
-\item A dataset ($Z$) with $p$ vectors are sampled from multivariate normal distribution with covariance matrix $\Sigma = \text{diag}(\lambda_1, \lambda_2, \ldots, \lambda_p)$ such that $\lambda_1 = 1$ and $\lambda_i = \exp\left\{{-\gamma(i - 1)}\right\}, i = 2, \ldots, p$.
+\item A dataset ($Z$) with $p$ vectors are sampled from multivariate normal distribution with covariance matrix $\Sigma = \text{diag}(\lambda_1, \lambda_2, \ldots, \lambda_p)$ such that $\lambda_1 = 1$ and $\lambda_i = \exp\left\{{-\gamma(i - 1)}\right\}, i = 2, \ldots, p$, where $\lambda_i$ are the eigenvalues of $Z$
 \item The coefficient of determination in $\left[ y, Z \right]$ structure is also preserved in $\left[ y, X \right]$. Using this fact, the covariance between $Z$ and $y$ were set to nonzero for those position specified in {\tt relpos} and the remaining were set to zero keeping the coefficient of determination equals to {\tt R2}.
-\item Finally, the observations set $\left[ y, Z \right]$ were orthogonally rotated by a rotation matrix $R$ to obtain $\left[ y, X \right]$. Similarly, the true regression coefficients $\beta$ were also computed through covariance structure of $\left[ y, Z \right]$ and rotation matrix $R$.
+\item Finally, the observations set $\left[ y, Z \right]$ were orthogonally rotated by a rotation matrix $R$ to obtain $\left[ y, X \right]$. Similarly, the true regression coefficients $\beta$ were also computed through covariance structure of $\left[ y, Z \right]$ and rotation matrix $R$ \citep[see: ][]{saebo2015simrel}.
 \end{itemize}
 
-For explanation of details, we have chosen Design 5 and Design 28 for further discussions and comparison. These designs retain following properties, 
+For detail explanations, we have chosen Design 5 and Design 28 for further discussions and comparison. These designs retain following properties, 
 
 \begin{table}[ht]
-\centering
+\centering 
 \begin{tabularx}{0.8\textwidth}{Xlrr}
   \hline
                                   &              & Design 5 & Design 28 \\ 
@@ -457,11 +457,12 @@ For explanation of details, we have chosen Design 5 and Design 28 for further di
   \hline
 \end{tabularx}
 \caption{Properties of selected calibration set} 
+
 \label{tab:selected-design}
 \end{table}
 
 \section{Systematic comparisons}
-A systematic comparison among the model is made on the basis of their ability to predict test samples measured by the average test prediction error over different calibration datasets. The error is calculated as,
+A systematic comparison among the models is made on the basis of their ability to predict test samples measured by the average test prediction error over different calibration datasets with same properties. The average test prediction error is calculated as,
 
 \begin{equation*}
     E_c\left[E_y\left(y - \hat{y}\right)^2\right] =
@@ -470,22 +471,22 @@ A systematic comparison among the model is made on the basis of their ability to
 
 The basic comparison among the models based on this criteria can be summarized in following points --
 
-In most of design discussed in section \ref{sec:data-simulation}, BayesPLS was able to achieve smallest prediction error. In contrast, the maximum likelihood based envelope estimate and ordinary least squares estimates has produced poor prediction error mostly in the designs with large predictor variables (see design: 2, 6, 10, 14, 18, 22, 26 and 30). Despite having excellent prediction, computation of BayesPLS estimate is time consuming.
+In most of design discussed in section \ref{sec:data-simulation}, BayesPLS was able to achieve smallest prediction error. In contrast, the maximum likelihood based envelope estimate and ordinary least squares estimates has produced poor prediction error mostly in the designs with large predictor variables (see design: 2, 6, 10, 14, 18, 22, 26 and 30). Despite having excellent prediction, computation of BayesPLS estimate is time consuming. 
 
 In case of noisy data with low coefficient of determination ($R^2$) envelope estimates has produced high prediction error, mostly in case of datasets with large number of predictors. However in the similar case, BayesPLS and PLS prediction are minimum and relatevely stable over different components (See design: 25, 26). 
 
 Furthermore, the decay factor of eigenvalues of predictor variables and the position of relevant component has minimum impact on prediction error. An ANOVA model with prediction error as response and the parameter settings as predictors is fitted. After consequent backward elimination of third order ANOVA, the resultant model (Table-...) has also supported the above claims.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width = \textwidth]{figure/boxplots.pdf}
-  \caption{Comparison of OLS, envelope, PLS and bayesPLS estimates based on
-    their test prediction error catagorized by the factors that can influences
-    such as coefficient of determination ($R^2$), position of relevant
-    components (filled by different colors), reduction factor of eigenvalues of
-    predictors ({\tt gamma}) and number of predictor variables ({\tt p})}
-  \label{fig:pred-error-plot}
-\end{figure}
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width = \textwidth]{figure/boxplots.pdf}
+%   \caption{Comparison of OLS, envelope, PLS and bayesPLS estimates based on
+%     their test prediction error catagorized by the factors that can influences
+%     such as coefficient of determination ($R^2$), position of relevant
+%     components (filled by different colors), reduction factor of eigenvalues of
+%     predictors ({\tt gamma}) and number of predictor variables ({\tt p})}
+%   \label{fig:pred-error-plot}
+% \end{figure}
 
 
 % Solve/Raju: Det er flere estimatorer som det kan v\ae re interessant \aa\ sammenligne her. F\o rst gj\o r MSEP-plott for utvalgte parametersettinger med vanlig PLS, Bayes PLS, muligens SPLS av Chun \& Keles (2010)  (Se R-pakken p\aa\ cran.r-project.org/web/packages/spls.) og maximum likelihood estimatoren (hvis det er mulig \aa\ trekke den ut fra MATLAB-pakken i Cook et al (2014)). Ta med alle metodene i samme plot. 
