@@ -2,21 +2,40 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-\usepackage{amsmath} \usepackage{amsthm} \usepackage{bm} \usepackage{graphicx}
-\usepackage[usenames, dvipsnames]{xcolor} \usepackage{enumitem}
-\usepackage{caption} \usepackage{subcaption} \usepackage{float}
-\usepackage{longtable} \usepackage{tabularx}
+\usepackage{amsmath} 
+\usepackage{amsthm} 
+\usepackage{bm} 
+\usepackage{graphicx}
+% \graphicspath{{../../ModelComparison/pdf/}}
+\graphicspath{{pdf/}}
 
-\usepackage{mathpazo} \usepackage{geometry} \usepackage{setspace}
+\usepackage[usenames, dvipsnames]{xcolor} 
+\usepackage{enumitem}
+\usepackage{caption} 
+\usepackage{subcaption} 
+\usepackage{float}
+\usepackage{longtable} 
+\usepackage{tabularx}
 
-\usepackage[colorlinks=true]{hyperref} \newcommand\myshade{100}
-\colorlet{myblue}{NavyBlue} \colorlet{mybrown}{OrangeRed}
+\usepackage{mathpazo} 
+\usepackage[margin=1in]{geometry} 
+\usepackage{setspace}
+
+\usepackage[colorlinks=true]{hyperref} 
+\newcommand\myshade{100}
+\colorlet{myblue}{NavyBlue} 
+\colorlet{mybrown}{OrangeRed}
 \colorlet{mygreen}{ForestGreen}
 
-\hypersetup{ linkcolor = mybrown!\myshade!black, citecolor =
-  myblue!\myshade!black, urlcolor = mygreen!\myshade!black, colorlinks = true, }
+\hypersetup{ 
+  linkcolor = mybrown!\myshade!black, 
+  citecolor = myblue!\myshade!black, 
+  urlcolor = mygreen!\myshade!black, 
+  colorlinks = true, 
+}
 
-\usepackage[round]{natbib} \bibliographystyle{apalike}
+\usepackage[round]{natbib} 
+\bibliographystyle{apalike}
 
 \newtheorem{theorem}{Theorem} \newtheorem{principle}{Principle}
 \newtheorem{proposition}{Proposition} \theoremstyle{remark}
@@ -44,101 +63,27 @@
  
 \section{Introduction}
 
-Supervised learning from multivariate data is a central problem area in applied
-statistics. Specifically, let our task be to predict a sinwidtgle variable $y$ from
-a $p$-dimensional variable $\bm{x}$, having data on $n$ units. A large number of
-learning methods are discussed in \citet{hastie2009elements}, mainly under the
-ordinary multiple regression model. It is part of the philosophy of the present
-paper that for near collinear data, a \emph{reduction} of the regression model
-is called for.
+Supervised learning from multivariate data is a central problem area in applied statistics. Specifically, let our task be to predict a single variable $y$ from a $p$-dimensional variable $\bm{x}$, having data on $n$ units. A large number of learning methods are discussed in \citet{hastie2009elements}, mainly under the ordinary multiple regression model. It is part of the philosophy of the present paper that for near collinear data, a \emph{reduction} of the regression model is called for.
 
-Here we will take as our point of departure a well defined reduction of the
-random $\bm{x}$ regression model, the envelope model of
-\citet{cook2013envelopes} Cook et al (2013). In op. cit. it has been shown in
-detail that the envelope model in the case of reduction in the $\bm{x}$-variable
-is equivalent to the partial least square population model of
-\citet{helland1990partial} Helland (1990), and that a corresponding result is
-also valid in the case of a multivariate $\bm{y}$.
+Here we will take as our point of departure a well defined reduction of the random $\bm{x}$ regression model, the envelope model of \citet{cook2013envelopes} Cook et al (2013). In op. cit. it has been shown in detail that the envelope model in the case of reduction in the $\bm{x}$-variable is equivalent to the partial least square population model of \citet{helland1990partial} Helland (1990), and that a corresponding result is also valid in the case of a multivariate $\bm{y}$.
 
-Partial least squares (PLS) regression has had a vigorous devolopment in the
-chemometric literature since it was proposed by Herman and Svante Wold and by
-Harald Martens \citep{wold1984collinearity, martens1992multivariate} (Wold et
-al, 1984; Martens \& N\ae s, 1992). The method has been extended in several
-directions and its applications have been expanded to an increasing number of
-fields, for instance genomic data \citep{boulesteix2007partial}. Both these
-issues have been discussed in detail in a recent paper by
-\citet{mehmood2016diversity}, where a wealth of further references may be found.
+Partial least squares (PLS) regression has had a vigorous devolopment in the chemometric literature since it was proposed by Herman and Svante Wold and by Harald Martens \citep{wold1984collinearity, martens1992multivariate} (Wold et al, 1984; Martens \& N\ae s, 1992). The method has been extended in several directions and its applications have been expanded to an increasing number of fields, for instance genomic data \citep{boulesteix2007partial}. Both these issues have been discussed in detail in a recent paper by \citet{mehmood2016diversity}, where a wealth of further references may be found.
 
-In the beginning the PLS method was to some extent neglected or turned down by
-statisticians (an exception among others was \citealp*{frank1993statistical}),
-but it is now included as a tool among other biased regression methods by
-applied statisticians. For a general discussion paper with contributions both
-from mathematical statisticians and chemometricians, see
-\citet{sundberg1999multivariate}.
+In the beginning the PLS method was to some extent neglected or turned down by statisticians (an exception among others was \citealp*{frank1993statistical}), but it is now included as a tool among other biased regression methods by applied statisticians. For a general discussion paper with contributions both from mathematical statisticians and chemometricians, see \citet{sundberg1999multivariate}.
 
-Indeed there was a difference in culture between chemometricians and
-statisticians then, and this difference still exists to a large extent. A recent
-statement by \citet{munck2010physiochemical} illustrates this: 'If chemometrics
-in its historical development had been limited to follow current scientific (and
-statistical) theories there would have been minimal progress in its wide
-applications today.'
+Indeed there was a difference in culture between chemometricians and statisticians then, and this difference still exists to a large extent. A recent statement by \citet{munck2010physiochemical} illustrates this: 'If chemometrics in its historical development had been limited to follow current scientific (and statistical) theories there would have been minimal progress in its wide applications today.'
 
-This difference in culture may be related to the concepts of creativity and
-rigor, qualities which to some extent may be called complementary. One could say
-that one culture puts more emphasis on creativity, the other on rigor. Of
-course, this is a huge simplification. First, there is a lot of creativity among
-statisticians, also mathematical statisticians. Secondly, one should emphasize
-that precise thinking also should influence practice. A case of point is the
-following: \citet{chung2010sparse} recently proved that the PLS regression
-vector is inconsistent when there is noise in the $x$-variables when
-$p/n\rightarrow k>0$. This result is probably not too well known among
-chemometricians; some may have a tendency to put too much confidence in PLS
-regression when $p\sim n$ or $p>n$, also in cases where there may be noise in
-the $x$-variables.
+This difference in culture may be related to the concepts of creativity and rigor, qualities which to some extent may be called complementary. One could say that one culture puts more emphasis on creativity, the other on rigor. Of course, this is a huge simplification. First, there is a lot of creativity among statisticians, also mathematical statisticians. Secondly, one should emphasize that precise thinking also should influence practice. A case of point is the following: \citet{chung2010sparse} recently proved that the PLS regression vector is inconsistent when there is noise in the $x$-variables when $p/n\rightarrow k>0$. This result is probably not too well known among chemometricians; some may have a tendency to put too much confidence in PLS regression when $p\sim n$ or $p>n$, also in cases where there may be noise in the $x$-variables.
 
-However, it is true that chemometricians have had a leading edge in the
-development of PLS and of certain multivariate methods, in particular with
-respect to visualization etc., and they still may be ahead of us in this sense,
-even though there is a growing literature in statistical journals on the
-envelope model and on estimation in this model; see below.
+However, it is true that chemometricians have had a leading edge in the development of PLS and of certain multivariate methods, in particular with respect to visualization etc., and they still may be ahead of us in this sense, even though there is a growing literature in statistical journals on the envelope model and on estimation in this model; see below.
 
-Accepting this, an important general question is what mathematical statisticians
-can contribute with in this development. A vital aspect in the history of
-statistics is the interplay between model and estimators. Once a model is
-formulated, one can in principle think of several estimators in this model. Thus
-in the PLS/envelope model one can certainly discuss other estimators than the
-usual PLS regression estimator, which can be seen as originating by replacing
-population (co-)variances in the model by sample (co-)variances. Two examples
-are the maximum likelihood estimator of \citet{cook2013envelopes}, see also
-\citet{cook2015envlp}, \citet{cook2016note} and \citet{cook2016algorithms}; and
-the Bayesian estimator of \citet{helland2012near}. By simulation, both these
-estimators have performed well compared to PLS regression, but they have their
-disadvantages. The maximum likelihood estimator can not be used in the important
-case when the data matrix has rank less than $p$, and the Bayesian estimator
-requires heavy computations, in particular when $p$ is large.
+Accepting this, an important general question is what mathematical statisticians can contribute with in this development. A vital aspect in the history of statistics is the interplay between model and estimators. Once a model is formulated, one can in principle think of several estimators in this model. Thus in the PLS/envelope model one can certainly discuss other estimators than the usual PLS regression estimator, which can be seen as originating by replacing population (co-)variances in the model by sample (co-)variances. Two examples are the maximum likelihood estimator of \citet{cook2013envelopes}, see also \citet{cook2015envlp}, \citet{cook2016note} and \citet{cook2016algorithms}; and the Bayesian estimator of \citet{helland2012near}. By simulation, both these estimators have performed well compared to PLS regression, but they have their disadvantages. The maximum likelihood estimator can not be used in the important case when the data matrix has rank less than $p$, and the Bayesian estimator requires heavy computations, in particular when $p$ is large.
 
-To compare estimators we make vital use of the recently developed simulation
-package simrel; see \citet{saebo2015simrel}. A main purpose of the present paper
-is to illustrate the interplay between mathematical arguments on the one hand
-and systematic simulations on the other hand in an area where it is difficult to
-obtain results by purely analytical means.
+To compare estimators we make vital use of the recently developed simulation package simrel; see \citet{saebo2015simrel}. A main purpose of the present paper is to illustrate the interplay between mathematical arguments on the one hand and systematic simulations on the other hand in an area where it is difficult to obtain results by purely analytical means.
 
-It is important to emphasize that this paper is based upon reduction of the
-\emph{random} $\bm{x}$ regression model. When considering latent variables from
-PLS, and when considering near collinearity in the observed $\bm{x}$-variables,
-it is natural to treat these $\bm{x}$-variables as random. It is our philosophy
-that this is also the best way to look upon model reduction. On the other hand,
-in the context of prediction, one could argue that one should condition upon the
-$\bm{x}$-variables and consider them as fixed. A prominent paper on PLS
-regression, taking fixed $\bm{x}$-variables in the basic model, is
-\citet{kramer2012degrees}, where further references can be found.
+It is important to emphasize that this paper is based upon reduction of the \emph{random} $\bm{x}$ regression model. When considering latent variables from PLS, and when considering near collinearity in the observed $\bm{x}$-variables, it is natural to treat these $\bm{x}$-variables as random. It is our philosophy that this is also the best way to look upon model reduction. On the other hand, in the context of prediction, one could argue that one should condition upon the $\bm{x}$-variables and consider them as fixed. A prominent paper on PLS regression, taking fixed $\bm{x}$-variables in the basic model, is \citet{kramer2012degrees}, where further references can be found.
 
-In recent years there has been a rapidly growing literature on the envelope
-model. In addition to the maximum likelihood estimation paper mentioned above,
-the most important papers seem to be \citet{cook2015simultaneous}, where
-simultaneous reduction in the $\bm{x}$-space and $\bm{y}$-space is proposed, and
-\citet{cook2015foundations}, where extensions to other regression methods than
-linear regression are discussed. More references can be found in these papers.
+In recent years there has been a rapidly growing literature on the envelope model. In addition to the maximum likelihood estimation paper mentioned above, the most important papers seem to be \citet{cook2015simultaneous}, where simultaneous reduction in the $\bm{x}$-space and $\bm{y}$-space is proposed, and \citet{cook2015foundations}, where extensions to other regression methods than linear regression are discussed. More references can be found in these papers.
 
 The plan or this paper is as follows:
 
@@ -151,8 +96,8 @@ Take as a point of departure the linear model
   \label{model}
   y=\mu_{y}+\bm{\beta}'(\bm{x}-\bm{\mu}_{x})+\epsilon,
 \end{equation}
-where $\bm{\beta}$ and $\bm{x}$ are $p$-dimensional, and where the random predictor $\bm{x}$ has mean $\bm{\mu}_{x}$ and covariance matrix $\bm{\Sigma}_{xx}$, for simplicity assumed nonsingular here. (This can be relaxed to assuming $\bm{\beta}\in\mathrm{span}(\bm{\Sigma}_{xx})$ in the case where this matrix is singular; see \citet{cook2013envelopes}, and also C below.) Independently, $\epsilon$ is distributed with mean $0$ and variance $\sigma^2$. When doing prediction from this model for near collinear data, a model reduction may be called for. Throughout this paper, a definite $m$-dimensional model reduction, which may be formalized in several equivalent ways, will be used. When this model holds, we say that we have an envelope model of dimension $m$, or that there are $m$ relevant components for prediction in the model.
-\smallskip
+
+where $\bm{\beta}$ and $\bm{x}$ are $p$-dimensional, and where the random predictor $\bm{x}$ has mean $\bm{\mu}_{x}$ and covariance matrix $\bm{\Sigma}_{xx}$, for simplicity assumed nonsingular here. (This can be relaxed to assuming $\bm{\beta}\in\mathrm{span}(\bm{\Sigma}_{xx})$ in the case where this matrix is singular; see \citet{cook2013envelopes}, and also C below.) Independently, $\epsilon$ is distributed with mean $0$ and variance $\sigma^2$. When doing prediction from this model for near collinear data, a model reduction may be called for. Throughout this paper, a definite $m$-dimensional model reduction, which may be formalized in several equivalent ways, will be used. When this model holds, we say that we have an envelope model of dimension $m$, or that there are $m$ relevant components for prediction in the model. \smallskip
 
 \begin{enumerate}[label=\Alph*.]
 
@@ -215,16 +160,14 @@ of a Krylov sequence is also given. Being a reduced model that can be motivated 
 
 The PLS population model of \citet{helland1990partial} was motivated as a statistical interpretation of the chemometricians' PLS algoritm. The purpose of this subsection is to show that the same model could have been deduced by using symmetry consideration. Since model reduction from symmetry is a new way of thinking for many statisticians, we include several simple examples before returning to PLS.
 
-In general a given statistical problem involving a parameter $\theta$ may often have some 
-symmetry property associated with it, and this is formalized by introducing a group $G$ of transformations acting upon the parameter space $\Theta$. 
+In general a given statistical problem involving a parameter $\theta$ may often have some symmetry property associated with it, and this is formalized by introducing a group $G$ of transformations acting upon the parameter space $\Theta$. 
 
 When $\theta$ is transformed by the group $G$ and the observations are transformed accordingly \citep[see][]{helland2004statistical}, one should get equivalent results from the statistical analysis. As a trivial example: One should get equivalent results from a statistical analysis whether the parameters and the observations are measured in meters or in centimeters. Examples of groups acting upon a parameter space, are location: $\xi\rightarrow \xi+a$ for $a$ real; scale group: $(\xi ,\sigma)\rightarrow (b\xi , b\sigma)$ for $b>0$; location and scale: $(\xi,\sigma)\rightarrow(a+b\xi, b\sigma)$, where $\xi$ is an expectation and $\sigma$ is a standard deviation; rotation in a multidimensional parameter space; a general linear group acting upon a multidimensional parameter space etc.. Invariance under a group may help improving the estimation or the inference in general.
 
 
 We will not be very precise on the choice of $G$, but just say vaguely that we choose $G$, if possible, in agreement with some symmetry aspect of the whole situation.
 
-Now fix a point $\theta_0$ in the parameter space $\Theta$. An \emph{orbit} in this space under $G$ is the set of points of the form $g\theta_0 $ as $g$ varies over the group $G$. The different orbits are disjoint, and $\theta_0$ 
-can be replaced by any parameter on the orbit. Any set in $\Theta$ which is an orbit of $G$ or can be written as a union of orbits, is an invariant set under $G$ in $\Theta$, and conversely, all invariant sets can be written in 
+Now fix a point $\theta_0$ in the parameter space $\Theta$. An \emph{orbit} in this space under $G$ is the set of points of the form $g\theta_0 $ as $g$ varies over the group $G$. The different orbits are disjoint, and $\theta_0$ can be replaced by any parameter on the orbit. Any set in $\Theta$ which is an orbit of $G$ or can be written as a union of orbits, is an invariant set under $G$ in $\Theta$, and conversely, all invariant sets can be written in 
 this way. If there is only one orbit in $\Theta$, the group is said to be acting transitively upon $\Theta$.
 
 A statistical model should be as simple as possible, but not simpler. In some cases we may want to do a simplification, a model reduction. This may take the form of a reduction of the parameter space $\Theta$. Parts of this space which 
@@ -391,22 +334,6 @@ modified scale priors are also chosen for $\bm{\nu}$ as $\pi(\bm{\nu}) =\prod_i
 
 From simulations, the Bayes estimator under the PLS model seems to have very good properties; see Figure... (Solve: Kan du plukke ut den \o verste delfiguren av Figure 1 i Bayes-PLS artikkelen?).
 
-% \begin{figure}[H]
-%   \label{fig:est_pred_plot}
-%   \begin{subfigure}[b]{0.5\textwidth}
-%     \includegraphics[width=\textwidth]{../pdf/msep-sigma-plot.pdf}
-%     \caption{MSEP based on 5,000 test samples}
-%     \label{fig:msep}
-%   \end{subfigure}
-%   \begin{subfigure}[b]{0.5\textwidth}
-%     \includegraphics[width=\textwidth]{../pdf/est-error-plot.pdf}
-%     \caption{MSE of estimated coefficients ($\hat{\beta}$)}
-%     \label{fig:mse_beta}
-%   \end{subfigure}
-%   \caption{Comparison of Bayes, envelope(MLE) and PLS estimates on the basis of
-%     prediction error and estimation error}
-% \end{figure}
-
 u Typically, MSEP is lower than that for PLS. A particularly desirable feature of Bayes-PLS is that the MSEP-curve seems to be almost flat for small values of. Thus the error made by choosing a wrong number of components $m$ by crossvalidation must be expected to be small if $m$ is relatively small.
 
 The less desirable featurs of Bayes-PLS is that it requires very heavy computation taking long time with currently available software. The computational burden is largest when $p$ is large. The computation time can be made somewhat  less if we concentrate on the one-component model $m=1$.
@@ -414,80 +341,197 @@ The less desirable featurs of Bayes-PLS is that it requires very heavy computati
 \section{Data Simulations for model comparison}
 \label{sec:data-simulation}
 
-A comparative study was performed on these model based on their test prediction error using simulated datasets. The simulation of the calibration datasets were sampled from joint normal distribution with following specific properties.
+A comparative study was performed on these methods based on their minimum test prediction error using simulated datasets. Using model \ref{model} as a simulation model, calibration datasets were sampled from random regression framework where $\mathbf{x} \sim N\left( \mu_{\mathbf{x}}, \Sigma_{\mathbf{xx}} \right)$ with contains independent errors. Equivalently,
+
+
+\begin{equation}
+  \label{eq:rand-reg-model}
+  \begin{bmatrix}
+    y \\ \mathbf{x} 
+  \end{bmatrix} \sim
+  \mathcal{N}\left( \boldsymbol{\mu}_{yx}, \boldsymbol{\Sigma}_{yx} \right) =
+  \mathcal{N}\left(
+    \begin{bmatrix}
+      \mu_y \\ \boldsymbol{\mu}_x 
+    \end{bmatrix},
+    \begin{bmatrix}
+      \sigma_y^2               & \boldsymbol{\sigma}_{xy}^t \\
+      \boldsymbol{\sigma}_{xy} & \boldsymbol{\Sigma}_{xx}
+    \end{bmatrix}
+  \right)
+\end{equation}
+
+where, $\boldsymbol{\sigma}_{yx}$ is the covariance between predictors $(x)$ and response $(y)$; and $\boldsymbol{\Sigma}_{xx}$ is $(p\times p)$ covariance matrix of predictors. Without loss of generalities, $\boldsymbol{\mu}_y$ and $\boldsymbol{\mu}_x$ were set to zero and the variance of response $y$ is set to 1. Some other properties of this model such as the coefficient of determination and position of relevant components were assigned as in table-\ref{tab:parameters}, 
 
 \bigskip
-
-\begin{tabular}{rll}
-  Number of training samples       & {\tt n}     & 50 \\
-  Number of predictor variables    & {\tt p}     & 15 and 40 \\
-  Coefficient of variation         & {\tt R2}    & 0.5 and 0.9 \\
-  Position of relevant components  & {\tt relpos}
-                                                 & $\triangleright$ 1, 2 \;           
-                                                   $\triangleright$ 1,  3 \; \newline  
-                                                   $\triangleright$ 2,  3 and \;       
-                                                   $\triangleright$ 1,  2, 3 \\        
-  Decay factor of eigenvalues of X & {\tt gamma} & 0.5 and 0.9
-\end{tabular}
- 
-\bigskip
-
-From the possible combination of above parameters, 32 calibration sets were simulated with 5 replications of each, i.e. there are 160 calibration sets where each 5 of them have similar properties. In order to simulate these data an r-package {\tt simrel} \citep{saebo2015simrel} was used which is based on the concept of relevant space discussed in \citet{helland1994comparison}. Simulation with {\tt simrel} follows --
-
-\begin{itemize}[label=$\triangleright$]
-\item A dataset ($Z$) with $p$ vectors are sampled from multivariate normal distribution with covariance matrix $\Sigma = \text{diag}(\lambda_1, \lambda_2, \ldots, \lambda_p)$ such that $\lambda_1 = 1$ and $\lambda_i = \exp\left\{{-\gamma(i - 1)}\right\}, i = 2, \ldots, p$, where $\lambda_i$ are the eigenvalues of $Z$
-\item The coefficient of determination in $\left[ y, Z \right]$ structure is also preserved in $\left[ y, X \right]$. Using this fact, the covariance between $Z$ and $y$ were set to nonzero for those position specified in {\tt relpos} and the remaining were set to zero keeping the coefficient of determination equals to {\tt R2}.
-\item Finally, the observations set $\left[ y, Z \right]$ were orthogonally rotated by a rotation matrix $R$ to obtain $\left[ y, X \right]$. Similarly, the true regression coefficients $\beta$ were also computed through covariance structure of $\left[ y, Z \right]$ and rotation matrix $R$ \citep[see: ][]{saebo2015simrel}.
-\end{itemize}
-
-For detail explanations, we have chosen Design 5 and Design 28 for further discussions and comparison. These designs retain following properties, 
 
 \begin{table}[ht]
-\centering 
-\begin{tabularx}{0.8\textwidth}{Xlrr}
-  \hline
-                                  &              & Design 5 & Design 28 \\ 
-  \hline\hline
-  Number of observation           & {\tt n}      & 50       & 50 \\ 
-  Number of variables             & {\tt p}      & 15       & 40 \\ 
-  Coefficient of determination    & {\tt R2}     & 0.5      & 0.9 \\ 
-  Position of relevant components & {\tt relpos} & 1, 3     & 2, 3 \\ 
-  Decaying factor of eigenvalue   & {\tt gamma}  & 0.5      & 0.9 \\ 
-  Number of relevant predictor    & {\tt q}      & 15       & 40 \\ 
-  \hline
-\end{tabularx}
-\caption{Properties of selected calibration set} 
+  \centering
+  \begin{tabular}{rll}
+    Number of training samples              & $n$      & 50                \\
+    Number of predictor variables           & $p$      & 15 and 40         \\
+    Population coefficient of determination & $\rho^2$ & 0.5 and 0.9       \\
+    Position of relevant components         & $\mathcal{P}$
+                                            & $\triangleright$ 1, 2 \;           
+                                                 $\triangleright$ 1,  3 \; \newline  
+                                                 $\triangleright$ 2,  3 and \;       
+                                                 $\triangleright$ 1,  2, 3 \\        
+    Decay factor of eigenvalues of X        & $\eta$   & 0.5 and 0.9
+  \end{tabular}
+  \caption{Parameters used for simulating calibration set}
+  \label{tab:parameters}
+\end{table}
 
-\label{tab:selected-design}
+\bigskip
+
+From the possible combination of above parameters, 32 calibration sets were simulated with 5 replications of each, i.e. there are 160 calibration sets ({\tt datasets}) where each 5 of them have similar properties. In order to simulate these data an r-package {\tt simrel} \citep{saebo2015simrel} was used which is based on the concept of relevant space discussed in \citet{helland1994comparison}. Simulation with {\tt simrel} follows --
+
+\begin{itemize}[label=$\triangleright$]
+\item Eigenvalues of $\boldsymbol{\Sigma}_{xx}$ are $\lambda_1, \lambda_2, \ldots, \lambda_p$. Here, we have assumed that $\lambda_1 = 1$ and $\lambda_{i+1} = e^{-\eta(j-1)}$, so that the $\eta$ parameters controls the decay of eigenvalues of $X$.
+\item In equation-\ref{beta}, $\gamma_i$ can be written as,
+  \begin{equation}
+    \label{eq:gamma}
+    \gamma_i = \frac{d_i^t \sigma_{Xy}}{\lambda_i}
+  \end{equation}
+  where, $d_i$ is $i^\text{th}$ eigenvector of $\boldsymbol{\Sigma}_{xx}$ and $\sigma_{Xy} = 0$ for $X$ that are relevant for $y$ and consequently, $\gamma_i \ne 0$ for $i \in \mathcal{P}$, i.e,
+ \begin{equation}
+   \label{eq:relevant-beta}
+   \beta = \sum_{i \in \mathcal{P}}{\gamma_i d_i}
+ \end{equation}
+\end{itemize}
+
+A Comprehensive discussions about {\tt simrel} is in \citet{saebo2015simrel}. For detail explanations, we have chosen Design 5 and Design 28 for further discussions and comparison. These designs retain following properties, 
+
+\begin{table}[ht]
+  \centering 
+  \begin{tabularx}{0.8\textwidth}{Xlrr}
+    \hline
+                                            &               & Design 5 & Design 28 \\ 
+    \hline\hline
+    Number of calibration samples           & $n$           & 50       & 50        \\ 
+    Number of predictor variables           & $p$           & 15       & 40        \\ 
+    Population coefficient of determination & $\rho^2$      & 0.5      & 0.9       \\ 
+    Position of relevant components         & $\mathcal{P}$ & 1, 3     & 2, 3      \\ 
+    Decaying factor of eigenvalue           & $\eta$        & 0.5      & 0.9       \\ 
+    \hline
+  \end{tabularx}
+  \caption{Properties of selected calibration set} 
+  \label{tab:selected-design}
 \end{table}
 
 \section{Systematic comparisons}
-A systematic comparison among the models is made on the basis of their ability to predict test samples measured by the average test prediction error over different calibration datasets with same properties. The average test prediction error is calculated as,
+A systematic comparison among the methods is made on the basis of their ability
+to predict test samples measured by the mean square error of prediction (MSEP)
+over different calibration datasets with same properties. The mean square error
+of prediction (MSEP) are calculated as,
 
 \begin{equation*}
     E_c\left[E_y\left(y - \hat{y}\right)^2\right] =
-    E_c\left[\left(\sigma^2 + E\left(\hat{\beta} - \beta\right)^t\Sigma_{xx}\left(\hat{\beta} - \beta\right)\right)\frac{n+1}{n}\right]
+    \left[\sigma^2 + E\left(\hat{\beta} - \beta\right)^t\Sigma_{xx}\left(\hat{\beta} - \beta\right)\right]\frac{n+1}{n}
 \end{equation*}
 
-The basic comparison among the models based on this criteria can be summarized in following points --
+The test prediction error for each methods and different combination of parameters, we fit a mixed effect model, as in equation-\ref{eq:mixed-model} considering each calibration set ({\tt dataset}) to be random. In this case, we have taken the minimum MSEP that a method can give with up until 10 number of components. The mixed effect model is fitted with third order interactions between {\tt p}, {\tt R2} $(R^2)$, {\tt relpos} $(\mathcal{P})$, {\tt Method}, {\tt eta} $(\eta)$ and {\tt dataset} where each calibration sets ({\tt dataset}) were considered as a random factor. 
 
-In most of design discussed in section \ref{sec:data-simulation}, BayesPLS was able to achieve smallest prediction error. In contrast, the maximum likelihood based envelope estimate and ordinary least squares estimates has produced poor prediction error mostly in the designs with large predictor variables (see design: 2, 6, 10, 14, 18, 22, 26 and 30). Despite having excellent prediction, computation of BayesPLS estimate is time consuming. 
+\begin{equation}
+  \label{eq:mixed-model}
+  {\tt msep}_{ijklms} = \mu + [{\tt p}_i + ({\tt R2})_j + {\tt relpos}_k + {\tt Method}_l + {\tt eta}_m + {\tt dataset}_s]^3 + \epsilon_{ijklms}
+\end{equation}
 
-In case of noisy data with low coefficient of determination ($R^2$) envelope estimates has produced high prediction error, mostly in case of datasets with large number of predictors. However in the similar case, BayesPLS and PLS prediction are minimum and relatevely stable over different components (See design: 25, 26). 
+where $\epsilon_{ijklms} \sim N(0, \sigma^2)$ and ${\tt dataset}_s \sim N(0, \sigma_{{\tt dataset}}^2)$
 
-Furthermore, the decay factor of eigenvalues of predictor variables and the position of relevant component has minimum impact on prediction error. An ANOVA model with prediction error as response and the parameter settings as predictors is fitted. After consequent backward elimination of third order ANOVA, the resultant model (Table-...) has also supported the above claims.
+From the fitted model, we found that decay factor of eigenvalues of $\boldsymbol{\Sigma}_{xx}$ ($\eta$) and the position of relevant components ($\mathcal{P}$) are not significant along with there interactions with others. Since not all levels of interactions have significant effect on minimum MSEP, a backward elimination is performed on the complete model.
 
-% \begin{figure}[H]
-%   \centering
-%   \includegraphics[width = \textwidth]{figure/boxplots.pdf}
-%   \caption{Comparison of OLS, envelope, PLS and bayesPLS estimates based on
-%     their test prediction error catagorized by the factors that can influences
-%     such as coefficient of determination ($R^2$), position of relevant
-%     components (filled by different colors), reduction factor of eigenvalues of
-%     predictors ({\tt gamma}) and number of predictor variables ({\tt p})}
-%   \label{fig:pred-error-plot}
-% \end{figure}
+\begin{table}[ht]
+  \centering
+  \begin{tabularx}{0.8\textwidth}{Xrcrr}
+    \hline
+                & F       & Df & Df.res & Pr($>$F) \\ 
+    \hline
+    p           & 269.31  & 1  & 156    & 0.0000   \\ 
+    R2          & 5627.95 & 1  & 156    & 0.0000   \\ 
+    Method      & 549.19  & 3  & 468    & 0.0000   \\ 
+    p:R2        & 1.25    & 1  & 156    & 0.2659   \\ 
+    p:Method    & 197.90  & 3  & 468    & 0.0000   \\ 
+    R2:Method   & 25.18   & 3  & 468    & 0.0000   \\ 
+    p:R2:Method & 14.74   & 3  & 468    & 0.0000   \\ 
+    \hline
+  \end{tabularx}
+  \caption{Analysis of Deviance Table (Type II Wald F tests with Kenward-Roger df)} 
+  \label{tab:anova-table}
+\end{table}
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{eff-plot-min} 
+  \caption[Effect Plot]{Effect of third order interaction -- between models,
+    coefficient of determination ($R^2$) and Number of variables ($p$)}
+  \label{fig:effect-plot}
+\end{figure}
+
+Analysis of deviance table (Table-\ref{tab:anova-table}) for the final model we
+obtained has suggesed that there is a significant third order interaction
+between number of variables $(p)$, coefficient of determination $(R^2)$ and
+estimation methods. The effect of this third order interaction, which we see in
+figure-\ref{fig:effect-plot}, shows that the maximum likelihood based estimation
+methods, in our case, envelope and ordinary least squares perform poor
+prediction for noisy datasets with large number of variables. However, the
+performance of envelope estimation is better as compared to ordinary least
+squares also in situation of $n/p \rightarrow 1$. The plot also has suggested that BayesPLS and PLS estimation methods are better and stable as compared to other methods in all the situations. 
+
+In order to have deeper understanding, the prediction performance of these estimation methods for each additional components included are computed. The prediction error for design 5 and design 28 for all the methods (colored) fitted with components from 0 to 10 where 0 being the null model without any components is presented in figure-\ref{fig:prediction-error}. Here, we can see that BayesPLS model has obtained the minimum prediction error with fewer components in both designs. The envelope model has performed better performance than the ordinary least squares and conventional PLS methods in case of design 28.
+
+In addition, we compare the prediction error of these methods with conventional
+PLS method by calculating the proportionate difference of prediction error as in
+equation-\ref{eq:pe-pls},
+
+\begin{figure}[!ht]
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{prediction-error-selected.pdf}
+    \caption{Mean Square Prediction Error}
+    \label{fig:prediction-error}
+  \end{subfigure}
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{prediction-error-pls-selected.pdf}
+    \caption{Mean Square Prediction Error relative to PLS}
+    \label{fig:prediction-error-pls}
+  \end{subfigure}
+  \caption{Test prediction Error}
+  \label{fig:pred-error-combined}
+\end{figure}
+
+\begin{equation}
+  \label{eq:pe-pls}
+  \text{Prediction Error (PE) proportional to PLS} =
+  \frac{\text{PE}_i - \text{PE}_\text{PLS}}{\text{PE}_\text{PLS}}, 
+\end{equation}
+for $i^\text{th}$ estimation method
+
+Figure-\ref{fig:prediction-error-pls} shows that the envelope model succeeded to
+achieve smaller prediction error than PLS model. And in the case of BayesPLS method, the prediction error is smallest than other models in all the cases. For example, in design 5, prediction error due to BayesPLS method is almost equals to the true error (0.5) present in the model which we can see in the table presented along with the plot. This is not the case for envelope, but it was able to make closer prediction with fewer components than PLS in design 28.
+
+Further we compare these prediction errors with corresponding coefficient estimates in parallel (figure-\ref{fig:est-error-combined}). Although having low prediction error in case of envelope estimation method, the coefficient estimates are highly unstable for different components which we can see in figure-\ref{fig:beta-err}. Since, BayesPLS and conventional PLS are not sabotaged due to matrix inversion, their estimates are more stable over different replicates and for different components (figure-\ref{fig:corr-beta}) especially when $n/p \rightarrow 1$. This stability agrees with the low prediction error we have discussed before.
+
+\begin{figure}[!ht]
+  \centering
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{beta-corr-plot-selected.pdf}
+    \caption{Correlation between true and estimated beta coefficients}
+    \label{fig:corr-beta}
+  \end{subfigure}
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{beta-error.pdf}
+    \caption{Mean Square Error of beta estimates}
+    \label{fig:beta-err}
+  \end{subfigure}
+  \caption{Beta Estimation Error and their correlation with true beta}
+  \label{fig:est-error-combined}
+\end{figure}
+
+From the above results, Envelope and BayesPLS estimation methods, when compared with PLS methods, display better prediction performance (only in some cases for envelope method). However both of them have their disadvantages. The envelope method, as based on maximum likelihood, breaks when $p$ approaches $n$ while BayesPLS have time consuming computation. If computed for only one component, BayesPLS can be a better alternative tool for conventional PLS method.
 
 % Solve/Raju: Det er flere estimatorer som det kan v\ae re interessant \aa\ sammenligne her. F\o rst gj\o r MSEP-plott for utvalgte parametersettinger med vanlig PLS, Bayes PLS, muligens SPLS av Chun \& Keles (2010)  (Se R-pakken p\aa\ cran.r-project.org/web/packages/spls.) og maximum likelihood estimatoren (hvis det er mulig \aa\ trekke den ut fra MATLAB-pakken i Cook et al (2014)). Ta med alle metodene i samme plot. 
 
@@ -500,15 +544,14 @@ Furthermore, the decay factor of eigenvalues of predictor variables and the posi
 % det er feil i $x$-variablene. 
 
 \section{Discussion}
+There is a vast literature on applications of PLS, not only in chemistry, but in a large number of applied fields; see for instance \citet{boulesteix2007partial}. Many further references are given in \citet{mehmood2016diversity}.
 
-There is a vast literature on applications of PLS, not only in chemistry, but in
-a large number of applied fields; see for instance Boulesteix \& Strimmer
-(2006). Many further references are given in \citet{mehmood2016diversity}
-Mehmoood and Ahmed (2015).
+Sometimes the issue is prediction, but very often one also see interpretations of scoring plots, loading plots and correlation plots; see for instance \citet{martens2001multivariate}. Such plots are not unfamiliar to statisticians in principal component connections, but they are much more used by the chemometric society and many scientists find them informative. They are plots of the sample variants of the latent variables and parameters defined by (\ref{wt}), (\ref{pq}) and (\ref{latent}), and thus involve consistent estimates of these quantities when $n\rightarrow\infty$ and probably also in the more general case $p/n\rightarrow 0$.
 
-Sometimes the issue is prediction, but very often one also see interpretations of scoring plots, loading plots and correlation plots; see for instance Martens \& Martens (2001). Such plots are not unfamiliar to statisticians in principal component connections, but they are much more used by the chemometric society and many scientists find them informative. They are plots of the sample variants of the latent variables and parameters defined by (\ref{wt}), (\ref{pq}) and (\ref{latent}), and thus involve consistent estimates of these quantities when $n\rightarrow\infty$ and probably also in the more general case $p/n\rightarrow 0$.
-
-By comparison there are relatively few papers by mathematical statisticians investigating statistical properties of the partial least squares regression method itself. There are however several investigations on the shrinkage properties of PLS; see Kr\"{a}mer (2007) and references there, and also Foschi (2015) with references. Garthwaite (1994) offered a simple interpretation of PLS. Stone \& Brooks (1990) and Naik \& Tsai (2000)  discuss different generalizations of PLS; in the latter paper also consistency of PLS is proved. Stoica \& Soderstorom (1998) derives asymptotic formulae related to PLS. Chun \& Keles (2010) extends consistency to the case $p/n\rightarrow 0$, introduces a sparse PLS algorithm, and compares methods by simulation.  Kr\"{a}mer \& Sugiama (2011) discusses the degrees of freedom of PLS regression, and uses this concept in model selection. See also references in this last paper.
+By comparison there are relatively few papers by mathematical statisticians
+investigating statistical properties of the partial least squares regression
+method itself. There are however several investigations on the shrinkage
+properties of PLS; see \citet{kramer2007overview} and references there, and also \citet{foschigeometry} with references. \citet{garthwaite1994interpretation} offered a simple interpretation of PLS. \citet{stone1990continuum} and \citet{naik2000partial} discuss different generalizations of PLS; in the latter paper also consistency of PLS is proved. \citet{stoica1998partial} derives asymptotic formulae related to PLS. \citet{chun2010sparse} extends consistency to the case $p/n\rightarrow 0$, introduces a sparse PLS algorithm, and compares methods by simulation. \citet{kramer2012degrees} discusses the degrees of freedom of PLS regression, and uses this concept in model selection. See also references in this last paper.
 
 The purpose of the present article has been to discuss the approach to PLR-regression via model reduction in the random $\bm{x}$ multiple regression model, and to compare estimators in this reduced model....(The rest depends on the results of the simulations.)
 
@@ -529,3 +572,4 @@ E-mail: \href{mailto:ingeh@math.uio.no}{ingeh@math.uio.no}
 
 
 \end{document}
+
