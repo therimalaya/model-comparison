@@ -9,7 +9,7 @@
 % \graphicspath{{../../ModelComparison/pdf/}}
 \graphicspath{{pdf/}}
 \usepackage[usenames, dvipsnames]{xcolor}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{float}
@@ -41,6 +41,7 @@
 \newtheorem{example}{Example}
 
 \usepackage{amssymb}
+\onehalfspacing
 \begin{document}
 
 \title{Model and estimators for partial least squares.\\
@@ -429,7 +430,8 @@ A systematic comparison of the methods across the simulation designs was made on
 \end{equation*}
 in the model. The expectation on the right-hand side of the above expression is estimated for each method and for each design as an average over the five replicated calibration sets. In this comparison study we have retrieved the minimum MSEP for each method across 1 to 10 components (assumed sizes of the relevant space). Effects of {\tt p}, $(\rho^2)$, $(\mathcal{P})$, {\tt Method}, and $(\eta)$ along with their interaction is then studied.
 
-These minimum MSEP's were used as responses in a mixed effects ANOVA model fitted with up to third order interaction effects between {\tt p}, $(\rho^2)$, $(\mathcal{P})$, {\tt Method}, and $(\eta)$. Since all methods were fitted to each calibration set, a random effect of calibration set (with 160 levels) was also included in the ANOVA model.
+% Are we talking about ANOVA model again ??
+% These minimum MSEP's were used as responses in a mixed effects ANOVA model fitted with up to third order interaction effects between {\tt p}, $(\rho^2)$, $(\mathcal{P})$, {\tt Method}, and $(\eta)$. Since all methods were fitted to each calibration set, a random effect of calibration set (with 160 levels) was also included in the ANOVA model.
 
 %\begin{equation}
 %  \label{eq:mixed-model}
@@ -462,82 +464,109 @@ These minimum MSEP's were used as responses in a mixed effects ANOVA model fitte
 
 \begin{figure}[!ht]
   \centering
-  \begin{subfigure}[t]{\textwidth}
-    \centering
-    \includegraphics[width=0.8\textwidth]{eff-plot-min}
-    \caption[Effect Plot]{Effect of third order interaction between estimation methods,
-      coefficient of determination ($R^2$) and number of variables ($p$)}
-    \label{fig:effect-plot-pr2m}
-  \end{subfigure}
-  \begin{subfigure}[t]{\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{pdf/eff-plot-min-rgm} 
-    \caption[Effect Plot: relpos, eta, method]{Effect of third order interaction
-      between estimation methods, decay factor of eigenvalues ($\eta$) and
-      position of relevant component $\mathcal{P}$}
-    \label{fig:effect-plot-rgm}
-  \end{subfigure}
-  \caption{Effect Plots}
+  \includegraphics[width=\textwidth]{pdf/effect-plot}
+  \caption{Third order interaction effects}
   \label{fig:effect-plot}
 \end{figure}
+
 % The Analysis of variance table (Table-\ref{tab:anova-table}) for the reduced
 % model suggests that there is a significant third order interaction between the
 % number of variables $(p)$, coefficient of determination $(\rho^2)$ and
 % estimation method.
 
-The effect of this third order interaction between $p$, $\rho^2$ and {\tt Methods}, which we see in Figure \ref{fig:effect-plot-pr2m}, shows that the maximum likelihood based estimation methods, in our case, the envelope and the ordinary least squares, perform poorly on data sets with large number of variables and low $\rho^2$. Still, the performance of the envelope is better than ordinary least squares also in situations where $p\sim n$. The interaction plots also suggest that the Bayes PLS and ordinary PLS estimation methods are better and more stable on average than the two other methods.
 
-Similarly, the effect of third order interaction between {\tt relpos}, $\eta$ and {\tt Method} in figure-\ref{fig:effect-plot-rgm} shows that OLS method gives higher prediction error than other methods but the effect of {\tt relpos} is small. 
+The effect of this third order interaction between $p$, $\rho^2$ and {\tt Methods}, which we see in Figure~\ref{fig:effect-plot}~(left), shows that the maximum likelihood based estimation methods, in our case, the envelope and the ordinary least squares, perform poorly on data sets with large number of variables and low $\rho^2$. Still, the performance of the envelope is better than ordinary least squares also in situations where $p\sim n$. The interaction plots also suggest that the Bayes PLS and ordinary PLS estimation methods are better and more stable on average than the two other methods.
+
+Similarly, the effect of third order interaction between {\tt relpos}, $\eta$ and {\tt Method} in figure~\ref{fig:effect-plot}~(right) shows that OLS method gives higher prediction error than other methods but the effect of {\tt relpos} is small but notable for the envelope method. In order to understand these differences in detail, smallest MSEP (mean square error of prediction) over 5 replicated calibration sets are plotted for entire 32 designs. Number of latent components of predictor is plotted against MSEP for each estimation method. Component zero is added as an average of response in calibration set, i.e. for component zero, $\hat{y}_\text{test} = \bar{y}_\text{train}$, to see weather the methods are better than the average response.
+
+To make it discrete, comments are organized in four groups:
+\begin{enumerate*}[label = \alph*)]
+\item \label{lst:g1} $p = 15$, $R^2 = 0.5$;
+\item \label{lst:g2} $p = 15$, $R^2 = 0.9$;
+\item \label{lst:g3} $p = 40$, $R^2 = 0.5$ and
+\item \label{lst:g4} $p = 40$, $R^2 = 0.9$.
+\end{enumerate*}
+  The ordinary least squares prediction error is shown by a straight dotted line.
 
 \begin{figure}[!ht]
-  \begin{subfigure}[b]{\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{prediction-error-selected.pdf}
-    \caption{Mean Square Prediction Error}
-    \label{fig:prediction-error}
-  \end{subfigure}
-  \begin{subfigure}[b]{\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{prediction-error-pls-selected.pdf}
-    \caption{Mean Square Prediction Error relative to PLS}
-    \label{fig:prediction-error-pls}
-  \end{subfigure}
-  \caption{Test prediction Error}
-  \label{fig:pred-error-combined}
+  \centering
+  \includegraphics[width = \textwidth]{pdf/prediction-error-15-1.pdf}
+  \caption[Prediction Error]{Average Prediction Error for designs with 15 predictor
+    variables where Coefficient of determination is 0.5}
+  \label{fig:pred-error-15-1}
+\end{figure}
+In group~\ref{lst:g1}, with small number of variables $(p << n)$ and noisy data $(R^2 = 0.5)$, figure~\ref{fig:pred-error-15-1} shows that all the estimation methods has performed better than ordinary least squares for all designs in this group. There are some convergence issues with BayesPLS when eigenvalues of predictors decreases rapidly. However, the BayesPLS was able to achieve its minimum prediction error with fewer number of components. MSEP for BayesPLS is also smaller than other methods in most of the situations. If only few components are considered, convergence issue of BayesPLS doesn't make any problem. In addition, it seems that the envelope methods is performing well when there are few relevant components in initial positions.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width = \textwidth]{pdf/prediction-error-15-2.pdf}
+  \caption[Prediction Error]{Average Prediction Error for designs with 15 predictor
+    variables where Coefficient of determination is 0.9}
+  \label{fig:pred-error-15-2}
 \end{figure}
 
-A graphical investigation of the average MSEP of all estimation methods can also be done across all 10 fitted components. The results are shown in Figure...... more
+Having few variables rich with information $(R^2 = 0.9)$, designs in figure~\ref{fig:pred-error-15-2} are easiest design among others. All the methods including OLS has small MSEP, but other methods are still dominant. In most of the situations, BayesPLS has gained minimum error with only one component. In this group, the performance of envelope is better than regular PLS and the minimum error for envelope is also achieved with fewer components.
 
-The test set prediction errors for design 5 and design 28 for all the methods are presented in figure-\ref{fig:prediction-error}. In figure-\ref{fig:prediction-error-pls} corresponding plots of prediction error differences relative to pls are shown as computed by eq. (\ref{eq:pe-pls}). (In these plots the zero component model corresponds to prediction using the mean response in the calibration data.) From these plots we can see that the Bayes-PLS model performs very well, with smaller MSEP than the other methods in both designs. The envelope model performs in general better than the ordinary least squares.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width = \textwidth]{pdf/prediction-error-40-1.pdf}
+  \caption[Prediction Error]{Average Prediction Error for designs with 40 predictor
+    variables where Coefficient of determination is 0.5}
+  \label{fig:pred-error-40-1}
+\end{figure}
+
+Low information content in many variables has made designs in group~\ref{lst:g2} the most difficult one. In figure~\ref{fig:pred-error-40-1}, the methods based on MLE has performed poorly and often poorer than an average guess. BayesPLS and regular PLS has operated well as previous cases. Situations with steep decay of eigenvalues has caused some convergence problems for BayesPLS, especially when fitted with large number of components. However the minimum error for BayesPLS (smaller than others method) was already obtained with fewer components, so the convergence has not become a big issue. Although based on maximum likelihood, envelope has performed better than OLS estimates at its based but is very unstable over different components. 
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width = \textwidth]{pdf/prediction-error-40-2.pdf}
+  \caption[Prediction Error]{Average Prediction Error for designs with 40 predictor
+    variables where Coefficient of determination is 0.9}
+  \label{fig:pred-error-40-2}
+\end{figure}
+
+Although having 40 predictors $(p\sim n)$, all methods are performing well due to rich information (high  value)
+\item Based on likelihood as OLS, envelope method has outperformed OLS in every
+  situations.
+\item In most of the situations (except in design-16), envelope method has
+  nearly attained true minimum error
+\item Bayes and PLS methods are highly stable and are closer to true minimum
+  error
+\item Both BayesPLS and PLS has outperformed OLS and envelope methods, BayesPLS
+  is able to obtain its minimum prediction error with fewer components.
+\end{itemize}
+
+\textbf{Some general points to be made in case of all designs,}
+
+\begin{itemize}[label = $\blacktriangleright$]
+\item In General regular PLS method is more stable in all situation. It is
+  extensible, easy and less time consuming to fit
+\item If the issue is to get closer prediction from squeezing information as
+  much as possible, BayesPLS can be a immediate alternative. Its performance
+  with fewer number of component is stable and better in all aspects
+\item Likelihood based methods has advantage of ..., for which envelope methods
+  is a best alternative among its type. Its performance is better than ordinary
+  least squares even when number of predictors is nearly equals to observations.
+\end{itemize}
+
+% The test set prediction errors for design 5 and design 28 for all the methods are presented in figure-\ref{fig:prediction-error}. In figure-\ref{fig:prediction-error-pls} corresponding plots of prediction error differences relative to pls are shown as computed by eq. (\ref{eq:pe-pls}). (In these plots the zero component model corresponds to prediction using the mean response in the calibration data.) From these plots we can see that the Bayes-PLS model performs very well, with smaller MSEP than the other methods in both designs. The envelope model performs in general better than the ordinary least squares.
 
 
-\begin{equation}
-  \label{eq:pe-pls}
-  \text{Prediction Error (PE) proportional to PLS} =
-  \frac{\text{PE}_i - \text{PE}_\text{PLS}}{\text{PE}_\text{PLS}},
-\end{equation}
+% \begin{equation}
+%   \label{eq:pe-pls}
+%   \text{Prediction Error (PE) proportional to PLS} =
+%   \frac{\text{PE}_i - \text{PE}_\text{PLS}}{\text{PE}_\text{PLS}},
+% \end{equation}
 %for $i^\text{th}$ estimation method
 
 %Figure-\ref{fig:prediction-error-pls} shows that the envelope model succeeded to
-%achieve smaller prediction error than PLS model. And in the case of BayesPLS method, the prediction error is smallest than other models in all the cases. For %example, in design 5, prediction error due to BayesPLS method is almost equals to the true error (0.5) present in the model which we can see in the table %presented along with the plot. This is not the case for envelope, but it was able to make closer prediction with fewer components than PLS in design 28.
-%Similar said before (Solve)
+%achieve smaller prediction error than PLS model. And in the case of BayesPLS method, the prediction error is smallest than other models in all the cases. For %example, in design 5, prediction error due to BayesPLS method is almost equals to the true error (0.5) present in the model which we can see in the table %presented along with the plot. This is not the case for envelope, but it was able to make closer prediction with fewer components than PLS in design 28. Similar said before (Solve)
 
 Further we compared the estimation errors of $\boldsymbol{\beta}$ and the correlations between estimates and true coefficients for design 5 and design 28. The results are shown in Figure (\ref{fig:est-error-combined}). Although having low prediction error in case of envelope estimation method, the coefficient estimates are highly unstable for different components which we can see in figure-\ref{fig:beta-err}. Bayes PLS and conventional PLS estimates are more stable over different replicates and for different components (figure-\ref{fig:corr-beta}) especially when $n/p \rightarrow 1$. This stability agrees with the low prediction error we have discussed before.
 
 \begin{figure}[!ht]
   \centering
-  \begin{subfigure}[b]{\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{beta-corr-plot-selected.pdf}
-    \caption{Correlation between true and estimated beta coefficients}
-    \label{fig:corr-beta}
-  \end{subfigure}
-  \begin{subfigure}[b]{\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{beta-error.pdf}
-    \caption{Mean Square Error of beta estimates}
-    \label{fig:beta-err}
-  \end{subfigure}
+  \includegraphics[width=\textwidth]{pdf/est-combined-plot.pdf}
   \caption{Beta Estimation Error and their correlation with true beta}
   \label{fig:est-error-combined}
 \end{figure}
