@@ -306,7 +306,7 @@ as given in eq. (\ref{beta}). In {\tt simrel} the following simplifying assumpti
 \item Without loss of generality it is further assumed that $\sigma_y=1$ and $\boldsymbol{\mu}_{yx}=\boldsymbol{0}$.
 \end{itemize}
 
-In {\tt simrel} the actual values of $\boldsymbol{\sigma}_{xy}$ were set to satisfy a pre-specified value of the population coefficient of determination $\rho^2$. It may be shown that under the above assumptions $\rho^2=\boldsymbol{\sigma}_{xy}'\boldsymbol{\Sigma}_{xx}^{-1}\boldsymbol{\sigma}_{xy}$. This completes the specification of the parameters used in {\tt simrel}, and in the present comparison study a design for the simulated data sets in terms of these parameters were as defined in Table (\ref{tab:parameters}) below.
+In {\tt simrel} the actual values of $\boldsymbol{\sigma}_{xy}$ were set to satisfy a pre-specified value of the population coefficient of determination $\rho^2$. It may be shown that under the above assumptions $\rho^2=\boldsymbol{\sigma}_{xy}'\boldsymbol{\Sigma}_{xx}^{-1}\boldsymbol{\sigma}_{xy}$. This completes the specification of the parameters used in {\tt simrel}, and in the present comparison study a design for the simulated data sets in terms of these parameters were as defined in Table~1 below.
 
 From the possible combination of the above parameters, 32 calibration sets were simulated with 5 replications of each, i.e. there were 160 calibration sets ({\tt datasets}) altogether.
 
@@ -340,7 +340,7 @@ A systematic comparison of the methods across the simulation designs was made on
     E_x\left[E_y\left(y - \hat{y}\right)^2\right] =
     \left[\sigma^2 + E\left(\hat{\bm{\beta}} - \bm{\beta}\right)^t\bm{\Sigma}_{xx}\left(\hat{\bm{\beta}} - \bm{\beta}\right)\right]\frac{n+1}{n}
 \end{equation*}
-in the model. The expectation on the right-hand side of the above expression is estimated for each method and for each design as an average over the five replicated calibration sets. In order to study the effects of {\tt p}, $\rho^2$, {\tt relpos}$(\mathcal{P})$, {\tt Method}, and $(\eta)$ along with their interactions, we first retrieved the minimum MSEP for each method across 1 to 10 components (assumed sizes of the relevant space). In Figure~\ref{fig:effect-plot} interaction plots for these data properties are displayed.
+in the model. The expectation on the right-hand side of the above expression is estimated for each method and for each design as an average over the five replicated calibration sets. In order to study the effects of {\tt p}, $\rho^2$, {\tt relpos}$(\mathcal{P})$, {\tt Method}, and $(\eta)$ along with their interactions, we first retrieved the minimum MSEP for each method across 1 to 10 components (assumed sizes of the relevant space). In Figure~1 interaction plots for these data properties are displayed.
 
 \begin{center}
  Figure-1 Here 
@@ -352,9 +352,9 @@ in the model. The expectation on the right-hand side of the above expression is 
 %   \label{fig:effect-plot}
 % \end{figure}
 
-The effect of the third order interaction between $p$, $\rho^2$ and {\tt Methods}, which we see in Figure~\ref{fig:effect-plot}~(left), shows that the maximum likelihood based estimation methods, in our case, the envelope and the ordinary least squares, perform poorly on data sets with large number of variables and low $\rho^2$. Still, the performance of the envelope is better than ordinary least squares also in situations where $p\sim n$. The interaction plots suggest that the Bayes PLS and ordinary PLS estimation methods are better and more stable on average than the two other methods.
+The effect of the third order interaction between $p$, $\rho^2$ and {\tt Methods}, which we see in Figure~1~(left), shows that the maximum likelihood based estimation methods, in our case, the envelope and the ordinary least squares, perform poorly on data sets with large number of variables and low $\rho^2$. Still, the performance of the envelope is better than ordinary least squares also in situations where $p\sim n$. The interaction plots suggest that the Bayes PLS and ordinary PLS estimation methods are better and more stable on average than the two other methods.
 
-Similarly, the effect of third order interaction between {\tt relpos}, $\eta$ and {\tt Method} in Figure~\ref{fig:effect-plot}~(right) shows that OLS method gives higher prediction error than other methods, but the effect of {\tt relpos} is small but notable for the envelope method. Again Bayes PLS and ordinary PLS are best.
+Similarly, the effect of third order interaction between {\tt relpos}, $\eta$ and {\tt Method} in Figure~1~(right) shows that OLS method gives higher prediction error than other methods, but the effect of {\tt relpos} is small but notable for the envelope method. Again Bayes PLS and ordinary PLS are best.
 
 The prediction error plots below are organized into four groups:
 \begin{enumerate*}[label = \alph*)]
@@ -378,7 +378,7 @@ The prediction error plots below are organized into four groups:
 % \end{figure}
 
 In group~\ref{lst:g1}, with small number of variables $(p \ll n)$ and noisy data
-$(\rho^2 = 0.5)$, Figure~\ref{fig:pred-error-15-1} shows that all the estimation
+$(\rho^2 = 0.5)$, Figure~2 shows that all the estimation
 methods performed better than ordinary least squares for all designs in this
 group, Bayes PLS being best in nearly all cases. Some convergence problems with Bayes PLS when eigenvalues decrease rapidly
 can be ignored since the minimum MSEP is already obtained from fewer components.
@@ -395,7 +395,7 @@ can be ignored since the minimum MSEP is already obtained from fewer components.
 %   \label{fig:pred-error-15-2}
 % \end{figure}
 
-Having few variables rich with information $(\rho^2 = 0.9)$, the designs in group~\ref{lst:g2} (Figure~\ref{fig:pred-error-15-2}) leads to easy prediction with low prediction error in general for all methods. All the methods including OLS have small MSEPs, but the other methods are still dominant. In most of the situations, Bayes PLS has reached minimum error with only one component. In this group, the performance of envelope is better than regular PLS and the minimum error for envelope is also achieved with fewer components. 
+Having few variables rich with information $(\rho^2 = 0.9)$, the designs in group~\ref{lst:g2} (Figure~3) leads to easy prediction with low prediction error in general for all methods. All the methods including OLS have small MSEPs, but the other methods are still dominant. In most of the situations, Bayes PLS has reached minimum error with only one component. In this group, the performance of envelope is better than regular PLS and the minimum error for envelope is also achieved with fewer components. 
 
 \begin{center}
  Figure-4 Here 
@@ -409,7 +409,7 @@ Having few variables rich with information $(\rho^2 = 0.9)$, the designs in grou
 %   \label{fig:pred-error-40-1}
 % \end{figure}
 
-Low information content combined with many predictor variables characterize the designs in group~\ref{lst:g3} and prediction is in general difficult for these designs. In Figure~\ref{fig:pred-error-40-1}, the methods based on maximum likelihood estimation performed poorly and often poorer than an average guess. Bayes PLS and regular PLS performed well, as in the previous designs.
+Low information content combined with many predictor variables characterize the designs in group~\ref{lst:g3} and prediction is in general difficult for these designs. In Figure~4, the methods based on maximum likelihood estimation performed poorly and often poorer than an average guess. Bayes PLS and regular PLS performed well, as in the previous designs.
 
 \begin{center}
  Figure-5 Here 
@@ -423,26 +423,14 @@ Low information content combined with many predictor variables characterize the 
 %   \label{fig:pred-error-40-2}
 % \end{figure}
 
-Although having 40 predictors $(p\sim n)$, all methods are performing well on the designs in group~\ref{lst:g4} due to rich information (high $\rho^2$). Figure~\ref{fig:pred-error-40-2} shows that in most of the situations (except in design-16), the envelope method has nearly attained true minimum error (0.1) and has outperformed OLS. However, its prediction error is still larger than Bayes PLS and PLS. Bayes PLS and PLS methods are highly stable and are closer to true minimum error. Both of these methods have outperformed OLS and the envelope methods. Further, Bayes PLS is able to obtain its minimum prediction error with only few components. 
+Although having 40 predictors $(p\sim n)$, all methods are performing well on the designs in group~\ref{lst:g4} due to rich information (high $\rho^2$). Figure~5 shows that in most of the situations (except in design-16), the envelope method has nearly attained true minimum error (0.1) and has outperformed OLS. However, its prediction error is still larger than Bayes PLS and PLS. Bayes PLS and PLS methods are highly stable and are closer to true minimum error. Both of these methods have outperformed OLS and the envelope methods. Further, Bayes PLS is able to obtain its minimum prediction error with only few components. 
 
-In general odinary PLS is very stable in all situations. It is extensible (lots
-of variants has been developed after its introduction), easy and less time
-consuming to fit than Bayes PLS and the envelope method. If the issue is to get closer
-prediction from squeezing information as much as possible, Bayes PLS will be an alternative. Its performance with fewer number of components is stable
-and better in all designs studied here. The envelope method performed better than OLS and the performance increased for informative data $(\rho^2 = 0.9)$. However, the
-increased error with additional component indicates low shrinkage effect of the
+In general odinary PLS is very stable in all situations. It is extensible (lots of variants has been developed after its introduction), easy and less time consuming to fit than Bayes PLS and the envelope method. If the issue is to get closer prediction from squeezing information as much as possible, Bayes PLS will be an alternative. Its performance with fewer number of components is stable and better in all designs studied here. The envelope method performed better than OLS and the performance increased for informative data $(\rho^2 = 0.9)$. However, the increased error with additional component indicates low shrinkage effect of the
 method.
 
-Correlation between estimated and true regression coefficients $(\beta)$ along
-with the mean square error of estimation (MSE) is presented in
-Figure~\ref{fig:est-error-combined}. In case of ordinary PLS and the envelope method,
-the correlation for design 1 from group~\ref{lst:g1} and design 3 from
-group~\ref{lst:g2}, both having 15 predictors, is high for small components.
-However for design 2 from group~\ref{lst:g3} and
-design 4 from group~\ref{lst:g4}, envelope methods exhibit sudden decrease in
-the correlation with corresponding increase in estimation error. The impressive prediction performance of Bayes PLS is also seen from the high correlation of estimated coefficients and true coefficients. In addition, the average MSE of regression for this methods is also small compared to others for all the components. 
+Correlation between estimated and true regression coefficients $(\beta)$ along with the mean square error of estimation (MSE) is presented in Figure~6. In case of ordinary PLS and the envelope method, the correlation for design 1 from group~\ref{lst:g1} and design 3 from group~\ref{lst:g2}, both having 15 predictors, is high for small components. However for design 2 from group~\ref{lst:g3} and design 4 from group~\ref{lst:g4}, envelope methods exhibit sudden decrease in the correlation with corresponding increase in estimation error. The impressive prediction performance of Bayes PLS is also seen from the high correlation of estimated coefficients and true coefficients. In addition, the average MSE of regression for this methods is also small compared to others for all the components. 
 
-Although having low prediction error in case of envelope estimation method, the coefficient estimates are highly unstable for different components which we can see from its variation in correlation with true coefficients (Figure~\ref{fig:est-error-combined},~top. Bayes PLS and regular PLS estimates are more stable over different replicates and for different components (Figure~\ref{fig:est-error-combined}, bottom) especially when $p\sim n$. This stability agrees with the low prediction error we have discussed before.
+Although having low prediction error in case of envelope estimation method, the coefficient estimates are highly unstable for different components which we can see from its variation in correlation with true coefficients (Figure~6,~top. Bayes PLS and regular PLS estimates are more stable over different replicates and for different components (Figure~6, bottom) especially when $p\sim n$. This stability agrees with the low prediction error we have discussed before.
 
 \begin{center}
  Figure-6 Here 
