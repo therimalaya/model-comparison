@@ -1,0 +1,14 @@
+_*
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.toc
+auto
+./figure/prediction-error-pls.pdf
+.Rproj.user
+.Rhistory
+/model-comparison-comments.pdf
+/model-comparison-fig-tables.pdf
