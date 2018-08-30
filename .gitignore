@@ -12,3 +12,5 @@ auto
 .Rhistory
 /model-comparison-comments.pdf
 /model-comparison-fig-tables.pdf
+scripts/example-1/robj
+scripts/example-2/unsync
